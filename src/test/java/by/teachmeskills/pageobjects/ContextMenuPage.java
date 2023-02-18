@@ -26,7 +26,7 @@ public class ContextMenuPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public String checkName1() {
+    public String checkName() {
         Actions action = new Actions(driver);
         action.contextClick(areaBox).perform();
         return getBtnClickAlert();
