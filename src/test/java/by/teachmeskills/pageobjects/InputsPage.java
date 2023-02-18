@@ -10,12 +10,12 @@ import org.openqa.selenium.support.PageFactory;
      И Keys.ARROW_DOWN
      http://the-internet.herokuapp.com/inputs
  */
-public class Inputs extends BasePage {
+public class InputsPage extends BasePage {
 
     @FindBy(xpath = "//input[@type='number']")
     private WebElement inputField;
 
-    public Inputs() {
+    public InputsPage() {
         driver.get("http://the-internet.herokuapp.com/inputs");
         PageFactory.initElements(driver, this);
     }

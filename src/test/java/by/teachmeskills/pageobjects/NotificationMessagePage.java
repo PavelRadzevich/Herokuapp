@@ -14,7 +14,7 @@ import java.time.Duration;
     https://stackoverflow.com/questions/20903231/how-to-make-selenium-wait-until-an-element-is-present
     http://the-internet.herokuapp.com/notification_message
  */
-public class NotificationMessage extends BasePage {
+public class NotificationMessagePage extends BasePage {
 
     @FindBy(xpath = "//div[@id='flash']")
     private WebElement actionMsg;
@@ -22,7 +22,7 @@ public class NotificationMessage extends BasePage {
     @FindBy(xpath = " //a[contains(@href,'/notification_message')]")
     private WebElement actionLink;
 
-    public NotificationMessage() {
+    public NotificationMessagePage() {
         driver.get("http://the-internet.herokuapp.com/notification_message");
         PageFactory.initElements(driver, this);
     }

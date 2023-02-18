@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
     и так далее.
     http://the-internet.herokuapp.com/tables
  */
-public class DataTables extends BasePage {
+public class DataTablesPage extends BasePage {
 
     @FindBy(xpath = "//table[@id='table1']//tbody//tr[1]/td[1]")
     private WebElement lastNameUser1;
@@ -25,7 +25,7 @@ public class DataTables extends BasePage {
     @FindBy(xpath = "//table[@id='table2']//tbody//tr[1]/td[3]")
     private WebElement emailUser2;
 
-    public DataTables() {
+    public DataTablesPage() {
         driver.get("http://the-internet.herokuapp.com/tables");
         PageFactory.initElements(driver, this);
     }

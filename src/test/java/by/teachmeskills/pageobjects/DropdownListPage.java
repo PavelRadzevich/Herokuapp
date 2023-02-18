@@ -12,11 +12,11 @@ import java.util.List;
     выбрать второй, проверить, что он выбран.
     http://the-internet.herokuapp.com/dropdown
  */
-public class DropdownList extends BasePage {
+public class DropdownListPage extends BasePage {
     @FindBy(id = "dropdown")
     private WebElement dropDownList;
 
-    public DropdownList() {
+    public DropdownListPage() {
         driver.get("http://the-internet.herokuapp.com/dropdown");
         PageFactory.initElements(driver, this);
     }
@@ -41,22 +41,3 @@ public class DropdownList extends BasePage {
         dropDown.selectByVisibleText(strOptions);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

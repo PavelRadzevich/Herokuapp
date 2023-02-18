@@ -11,12 +11,12 @@ import java.util.List;
     Проверить, что второй чекбокс checked, сделать unhecked, проверить, что он unchecked
     http://the-internet.herokuapp.com/checkboxes
  */
-public class Checkboxes extends BasePage {
+public class CheckboxesPage extends BasePage {
 
     @FindBy(css = "input[type='checkbox']")
     private List<WebElement> checkboxList;
 
-    public Checkboxes() {
+    public CheckboxesPage() {
         driver.get("http://the-internet.herokuapp.com/checkboxes");
         PageFactory.initElements(driver, this);
     }

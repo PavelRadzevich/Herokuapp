@@ -8,12 +8,12 @@ import org.openqa.selenium.support.PageFactory;
     Typos - Проверить соответствие параграфа орфографии.
     http://the-internet.herokuapp.com/typos
  */
-public class Typos extends BasePage {
+public class TyposPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='example']/p[last()]")
     private WebElement paragraphCheck;
 
-    public Typos() {
+    public TyposPage() {
         driver.get("http://the-internet.herokuapp.com/typos");
         PageFactory.initElements(driver, this);
     }

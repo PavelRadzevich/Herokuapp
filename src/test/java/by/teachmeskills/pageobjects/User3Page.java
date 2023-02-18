@@ -4,12 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UserPage2 extends BasePage {
+public class User3Page extends BasePage {
 
     @FindBy(xpath = "//h1[text()='Not Found']")
     private WebElement captionMsg;
 
-    public UserPage2() {
+    public User3Page() {
         PageFactory.initElements(driver, this);
     }
 

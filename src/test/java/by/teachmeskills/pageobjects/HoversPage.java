@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
     и https://stackoverflow.com/questions/17293914/how-to-perform-mouseover-function-in-selenium-webdriver-using-java
     http://the-internet.herokuapp.com/hovers
  */
-public class Hovers extends BasePage {
+public class HoversPage extends BasePage {
 
     @FindBy(xpath = "//*[@id=\"content\"]/div/div[1]/img")
     private WebElement user1;
@@ -40,7 +40,7 @@ public class Hovers extends BasePage {
     @FindBy(xpath = "//div[@class='example']/div[3]//a")
     private WebElement userLink3;
 
-    public Hovers() {
+    public HoversPage() {
         driver.get("http://the-internet.herokuapp.com/hovers");
         PageFactory.initElements(driver, this);
     }
@@ -66,21 +66,21 @@ public class Hovers extends BasePage {
         return userName3.getText();
     }
 
-    public UserPage1 getLinkUser1() {
+    public User1Page getLinkUser1() {
         Actions action = new Actions(driver);
         action.moveToElement(user1).moveToElement(userLink1).click().build().perform();
-        return new UserPage1();
+        return new User1Page();
     }
 
-    public UserPage2 getLinkUser2() {
+    public User2Page getLinkUser2() {
         Actions action = new Actions(driver);
         action.moveToElement(user2).moveToElement(userLink2).click().build().perform();
-        return new UserPage2();
+        return new User2Page();
     }
 
-    public UserPage3 getLinkUser3() {
+    public User3Page getLinkUser3() {
         Actions action = new Actions(driver);
         action.moveToElement(user3).moveToElement(userLink3).click().build().perform();
-        return new UserPage3();
+        return new User3Page();
     }
 }

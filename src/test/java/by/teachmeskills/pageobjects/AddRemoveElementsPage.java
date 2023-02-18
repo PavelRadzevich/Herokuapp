@@ -11,7 +11,7 @@ import java.util.List;
     http://the-internet.herokuapp.com/add_remove_elements/
  */
 
-public class AddRemoveElements extends BasePage {
+public class AddRemoveElementsPage extends BasePage {
 
     @FindBy(xpath = "//button[text()='Add Element']")
     private WebElement btnAdd;
@@ -22,16 +22,14 @@ public class AddRemoveElements extends BasePage {
     @FindBy(xpath = " //div[@id='elements']/button")
     private List<WebElement> btnDellCount;
 
-    public AddRemoveElements() {
+    public AddRemoveElementsPage() {
         driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
         PageFactory.initElements(driver, this);
     }
 
     public void btnClickAdd(int numberOfClicks) {
-        if (numberOfClicks != 0) {
-            for (int i = 0; i < numberOfClicks; i++) {
-                btnAdd.click();
-            }
+        for (int i = 0; i < numberOfClicks; i++) {
+            btnAdd.click();
         }
     }
 
@@ -41,6 +39,10 @@ public class AddRemoveElements extends BasePage {
 
     public int checkBtnDell() {
         List<WebElement> elements = btnDellCount;
-        return elements.size();
+        if (elements != null) {
+            return elements.size();
+        } else {
+            return 0;
+        }
     }
 }
