@@ -28,7 +28,7 @@ public class DynamicControlsPage extends BasePage {
     private WebElement checkBoxInput;
     @FindBy(xpath = "//form[@id='checkbox-example']//button")
     private WebElement btnRemoveAdd;
-    @FindBy(xpath = "//form[@id='checkbox-example']//p[@id='message']")
+    @FindBy(xpath = "//form[@id='checkbox-example']/p[@id='message']")
     private WebElement waitingCheckboxTxt;
     @FindBy(xpath = "//form[@id='input-example']//input")
     private WebElement textBoxInput;
@@ -43,7 +43,7 @@ public class DynamicControlsPage extends BasePage {
     }
 
     public boolean checkChkBox() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         return wait.until(ExpectedConditions.invisibilityOf(checkBoxInput));
     }
 
@@ -51,7 +51,7 @@ public class DynamicControlsPage extends BasePage {
         btnRemoveAdd.click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOf(waitingCheckboxTxt));
-        return waitingInputTxt.getText().equals(msg);
+        return waitingCheckboxTxt.getText().equals(msg);
     }
 
     public boolean checkInputBox() {
