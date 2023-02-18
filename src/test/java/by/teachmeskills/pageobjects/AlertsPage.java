@@ -58,7 +58,7 @@ public class AlertsPage extends BasePage {
     }
 
     public String getBtnClickPrompt(String msg) {
-        btnConfirm.click();
+        btnPrompt.click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         alert.sendKeys(msg);
