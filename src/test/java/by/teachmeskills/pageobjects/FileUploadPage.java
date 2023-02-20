@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.time.Duration;
 
 public class FileUploadPage extends BasePage {
@@ -26,13 +27,14 @@ public class FileUploadPage extends BasePage {
     @FindBy(xpath = "//div[@id='uploaded-files']")
     private WebElement fileUploaded;
 
-    public FileUploadPage(){
+    public FileUploadPage() {
         driver.get("http://the-internet.herokuapp.com/upload");
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    public boolean checkFileUpload(){
-        btnChooseFile.sendKeys("src/test/resources/test.txt");
+    public boolean checkFileUpload() {
+        File file = new File("src/test/resources/test.txt");
+        btnChooseFile.sendKeys(file.getAbsolutePath());
         btnUpload.click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         return wait.until(ExpectedConditions.visibilityOf(fileUploaded)).isDisplayed();
