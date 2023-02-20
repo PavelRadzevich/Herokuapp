@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class IFramePage extends BasePage{
+public class IFramePage extends BasePage {
 
     @FindBy(xpath = "//div[@role='application']")
     private WebElement menuForm;
@@ -17,12 +17,13 @@ public class IFramePage extends BasePage{
     private WebElement iframeBox;
 
     @FindBy(xpath = "//body[@id='tinymce']/p")
-    private  WebElement textBox;
-    public IFramePage(){
-        PageFactory.initElements(driver,this);
+    private WebElement textBox;
+
+    public IFramePage() {
+        PageFactory.initElements(driver, this);
     }
 
-    public boolean checkTextInFrame(String msg){
+    public boolean checkTextInFrame(String msg) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOf(menuForm));
         driver.switchTo().frame(iframeBox);

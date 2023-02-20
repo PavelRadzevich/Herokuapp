@@ -1,6 +1,5 @@
 package by.teachmeskills.pageobjects;
 
-import net.bytebuddy.dynamic.scaffold.TypeWriter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,12 +16,12 @@ public class FramesPage extends BasePage {
     private WebElement iFrameLink;
 
 
-    public FramesPage(){
+    public FramesPage() {
         driver.get("http://the-internet.herokuapp.com/frames");
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    public IFramePage getIFramePage(){
+    public IFramePage getIFramePage() {
         iFrameLink.click();
         return new IFramePage();
     }
