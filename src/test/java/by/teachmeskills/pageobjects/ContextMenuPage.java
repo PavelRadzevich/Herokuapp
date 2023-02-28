@@ -6,9 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 /*
     Context Menu
@@ -22,7 +19,7 @@ public class ContextMenuPage extends BasePage {
     private WebElement areaBox;
 
     public ContextMenuPage() {
-        driver.get("http://the-internet.herokuapp.com/context_menu");
+        driver.get(baseUrl + "/context_menu");
         PageFactory.initElements(driver, this);
     }
 
@@ -33,8 +30,7 @@ public class ContextMenuPage extends BasePage {
     }
 
     public String getBtnClickAlert() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = waitForElement(15).until(ExpectedConditions.alertIsPresent());
         String msg = alert.getText();
         alert.accept();
         return msg;

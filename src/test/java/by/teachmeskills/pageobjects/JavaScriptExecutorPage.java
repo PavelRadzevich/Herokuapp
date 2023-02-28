@@ -5,9 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 /*
     JavaScriptExecutor
@@ -30,34 +27,39 @@ public class JavaScriptExecutorPage extends BasePage {
     @FindBy(xpath = "//h1[@class='heading']")
     private WebElement topElement;
 
-    public JavaScriptExecutorPage(){
-        driver.get("http://the-internet.herokuapp.com/");
-        PageFactory.initElements(driver,this);
+    public JavaScriptExecutorPage() {
+        driver.get(baseUrl);
+        PageFactory.initElements(driver, this);
     }
 
-    public boolean setDown50pix(){
+    public boolean setDown50pix() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,500)");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        return wait.until(ExpectedConditions.visibilityOf(down50PixelElement)).isDisplayed();
+        return waitForElement(15)
+                .until(ExpectedConditions.visibilityOf(down50PixelElement))
+                .isDisplayed();
     }
 
-    public boolean setDownByText(){
+    public boolean setDownByText() {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", aMultiWindow);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        return wait.until(ExpectedConditions.visibilityOf(aMultiWindow)).isDisplayed();
+        return waitForElement(15)
+                .until(ExpectedConditions.visibilityOf(aMultiWindow))
+                .isDisplayed();
     }
 
-    public boolean setUpPage(){
+    public boolean setUpPage() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,0)");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        return wait.until(ExpectedConditions.visibilityOf(topElement)).isDisplayed();
+        return waitForElement(15)
+                .until(ExpectedConditions.visibilityOf(topElement))
+                .isDisplayed();
     }
-    public boolean setDownPage(){
+
+    public boolean setDownPage() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        return wait.until(ExpectedConditions.visibilityOf(bottomElement)).isDisplayed();
+        return waitForElement(15)
+                .until(ExpectedConditions.visibilityOf(bottomElement))
+                .isDisplayed();
     }
 }

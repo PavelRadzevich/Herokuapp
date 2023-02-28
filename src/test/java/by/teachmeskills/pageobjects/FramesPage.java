@@ -17,7 +17,7 @@ public class FramesPage extends BasePage {
 
 
     public FramesPage() {
-        driver.get("http://the-internet.herokuapp.com/frames");
+        driver.get(baseUrl + "/frames");
         PageFactory.initElements(driver, this);
     }
 

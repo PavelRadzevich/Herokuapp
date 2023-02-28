@@ -26,7 +26,7 @@ public class DataTablesPage extends BasePage {
     private WebElement emailUser2;
 
     public DataTablesPage() {
-        driver.get("http://the-internet.herokuapp.com/tables");
+        driver.get(baseUrl + "/tables");
         PageFactory.initElements(driver, this);
     }
 

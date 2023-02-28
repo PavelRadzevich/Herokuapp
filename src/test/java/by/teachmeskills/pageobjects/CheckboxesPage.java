@@ -17,7 +17,7 @@ public class CheckboxesPage extends BasePage {
     private List<WebElement> checkboxList;
 
     public CheckboxesPage() {
-        driver.get("http://the-internet.herokuapp.com/checkboxes");
+        driver.get(baseUrl + "/checkboxes");
         PageFactory.initElements(driver, this);
     }
 

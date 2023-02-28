@@ -5,9 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class IFramePage extends BasePage {
 
@@ -30,15 +27,13 @@ public class IFramePage extends BasePage {
     }
 
     public boolean checkTextInFrame(String msg) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOf(menuForm));
+        waitForElement(15).until(ExpectedConditions.visibilityOf(menuForm));
         driver.switchTo().frame(iframeBox);
         return textBox.getText().equals(msg);
     }
 
     public IFramePage editTextFrame(String msg) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOf(menuForm));
+        waitForElement(15).until(ExpectedConditions.visibilityOf(menuForm));
         driver.switchTo().frame(iframeBox);
         textBox.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         textBox.sendKeys(msg);
@@ -49,7 +44,6 @@ public class IFramePage extends BasePage {
         driver.switchTo().defaultContent();
         btnAlignCenter.click();
         driver.switchTo().frame(iframeBox);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        return wait.until(ExpectedConditions.visibilityOf(textAlign)).isDisplayed();
+        return waitForElement(15).until(ExpectedConditions.visibilityOf(textAlign)).isDisplayed();
     }
 }

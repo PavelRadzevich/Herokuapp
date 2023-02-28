@@ -14,7 +14,7 @@ public class TyposPage extends BasePage {
     private WebElement paragraphCheck;
 
     public TyposPage() {
-        driver.get("http://the-internet.herokuapp.com/typos");
+        driver.get(baseUrl + "/typos");
         PageFactory.initElements(driver, this);
     }
 

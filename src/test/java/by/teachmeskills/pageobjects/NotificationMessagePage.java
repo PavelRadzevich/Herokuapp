@@ -4,9 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 /*
     Notification Messages - кликнуть на кнопку, дождаться появления нотификации, проверить соответствие
@@ -23,7 +20,7 @@ public class NotificationMessagePage extends BasePage {
     private WebElement actionLink;
 
     public NotificationMessagePage() {
-        driver.get("http://the-internet.herokuapp.com/notification_message");
+        driver.get(baseUrl + "/notification_message");
         PageFactory.initElements(driver, this);
     }
 
@@ -35,8 +32,7 @@ public class NotificationMessagePage extends BasePage {
 
     private void waitForMessage() {
         if (driver != null) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-            wait.until(ExpectedConditions.visibilityOf(actionMsg));
+            waitForElement(15).until(ExpectedConditions.visibilityOf(actionMsg));
         }
     }
 }

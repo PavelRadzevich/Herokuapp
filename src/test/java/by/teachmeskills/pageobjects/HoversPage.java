@@ -41,7 +41,7 @@ public class HoversPage extends BasePage {
     private WebElement userLink3;
 
     public HoversPage() {
-        driver.get("http://the-internet.herokuapp.com/hovers");
+        driver.get(baseUrl + "/hovers");
         PageFactory.initElements(driver, this);
     }
 

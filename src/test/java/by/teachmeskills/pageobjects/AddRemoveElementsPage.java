@@ -23,7 +23,7 @@ public class AddRemoveElementsPage extends BasePage {
     private List<WebElement> btnDellCount;
 
     public AddRemoveElementsPage() {
-        driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
+        driver.get(baseUrl + "/add_remove_elements/");
         PageFactory.initElements(driver, this);
     }
 

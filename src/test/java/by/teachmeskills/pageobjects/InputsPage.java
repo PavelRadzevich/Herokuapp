@@ -16,7 +16,7 @@ public class InputsPage extends BasePage {
     private WebElement inputField;
 
     public InputsPage() {
-        driver.get("http://the-internet.herokuapp.com/inputs");
+        driver.get(baseUrl + "/inputs");
         PageFactory.initElements(driver, this);
     }
 

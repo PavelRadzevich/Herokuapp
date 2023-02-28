@@ -5,9 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 /*
     Alerts
@@ -37,30 +34,27 @@ public class AlertsPage extends BasePage {
     private WebElement txtResult;
 
     public AlertsPage() {
-        driver.get("http://the-internet.herokuapp.com/javascript_alerts");
+        driver.get(baseUrl + "/javascript_alerts");
         PageFactory.initElements(driver, this);
     }
 
     public String getBtnClickAlert() {
         btnAlert.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = waitForElement(15).until(ExpectedConditions.alertIsPresent());
         alert.accept();
         return txtResult.getText();
     }
 
     public String getBtnClickConfirm() {
         btnConfirm.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = waitForElement(15).until(ExpectedConditions.alertIsPresent());
         alert.dismiss();
         return txtResult.getText();
     }
 
     public String getBtnClickPrompt(String msg) {
         btnPrompt.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = waitForElement(15).until(ExpectedConditions.alertIsPresent());
         alert.sendKeys(msg);
         alert.accept();
         return txtResult.getText();
