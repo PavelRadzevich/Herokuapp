@@ -17,7 +17,7 @@ public class DropdownListPage extends BasePage {
     private WebElement dropDownList;
 
     public DropdownListPage() {
-        driver.get("http://the-internet.herokuapp.com/dropdown");
+        driver.get(baseUrl + "/dropdown");
         PageFactory.initElements(driver, this);
     }
 
