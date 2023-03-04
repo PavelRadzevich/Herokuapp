@@ -4,6 +4,10 @@ import by.teachmeskills.pageobjects.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 /*  Автоматизировать тесты для: ToolsQA (demoqa.com). Каждая страница - отдельный тест.
     1.
@@ -28,19 +32,41 @@ import org.openqa.selenium.support.PageFactory;
     Принять Alert (кнопка ОК)
     Проверить введенный текст “You entered ххх”
  */
-public class MainPage extends BasePage {
+public class AlertsWindowsPage extends BasePage {
+    @FindBy(xpath = "//div[@class='main-header'][text()='Alerts, Frame & Windows']")
+    WebElement mainTitle;
 
-    @FindBy(xpath = "//h5[text()='Alerts, Frame & Windows']")
-    WebElement alertsFrameWindowPage;
+    @FindBy(xpath = "//span[@class='text'][text()='Alerts']")
+    WebElement alertMenuBtn;
 
-    public MainPage() {
-        driver.get("https://demoqa.com/");
+    @FindBy(xpath = "//div[@class='main-header'][text()='Alerts']")
+    WebElement mainTitleAlerts;
+
+    @FindBy(xpath = "//button[@id='alertButton']")
+    WebElement alertBtn;
+
+    @FindBy(xpath = "//button[@id='timerAlertButton']")
+    WebElement timeAlertBtn;
+
+    @FindBy(xpath = "//button[@id='confirmButton']")
+    WebElement confirmBtn;
+
+    @FindBy(xpath = "//button[@id='promtButton']")
+    WebElement promptBtn;
+
+    public AlertsWindowsPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public AlertsWindowsPage getAlertPage() {
-        alertsFrameWindowPage.click();
-        return new AlertsWindowsPage();
+    public AlertsWindowsPage isOpened() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOf(mainTitle));
+        return this;
     }
 
+    public AlertsWindowsPage isSelectAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOf(mainTitleAlerts));
+        return this;
+    }
 }
