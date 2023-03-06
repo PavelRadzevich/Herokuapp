@@ -1,13 +1,11 @@
 package by.teachmeskills.demoqa;
 
 import by.teachmeskills.pageobjects.BasePage;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 /*  Автоматизировать тесты для: ToolsQA (demoqa.com). Каждая страница - отдельный тест.
     1.
@@ -33,40 +31,107 @@ import java.time.Duration;
     Проверить введенный текст “You entered ххх”
  */
 public class AlertsWindowsPage extends BasePage {
+    String msg = "";
     @FindBy(xpath = "//div[@class='main-header'][text()='Alerts, Frame & Windows']")
-    WebElement mainTitle;
+    private WebElement mainTitle;
 
     @FindBy(xpath = "//span[@class='text'][text()='Alerts']")
-    WebElement alertMenuBtn;
+    private WebElement alertMenuBtn;
 
     @FindBy(xpath = "//div[@class='main-header'][text()='Alerts']")
-    WebElement mainTitleAlerts;
+    private WebElement mainTitleAlerts;
 
     @FindBy(xpath = "//button[@id='alertButton']")
-    WebElement alertBtn;
+    private WebElement alertBtn;
 
     @FindBy(xpath = "//button[@id='timerAlertButton']")
-    WebElement timeAlertBtn;
+    private WebElement timeAlertBtn;
 
     @FindBy(xpath = "//button[@id='confirmButton']")
-    WebElement confirmBtn;
+    private WebElement confirmAlertBtn;
+
+    @FindBy(xpath = "//span[@id='confirmResult']")
+    private WebElement confirmAlertTxt;
 
     @FindBy(xpath = "//button[@id='promtButton']")
-    WebElement promptBtn;
+    private WebElement promptAlertBtn;
+
+    @FindBy(xpath = "//span[@id='promptResult']")
+    private WebElement promptAlertTxt;
 
     public AlertsWindowsPage() {
         PageFactory.initElements(driver, this);
     }
 
     public AlertsWindowsPage isOpened() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOf(mainTitle));
+        waitVisibility(mainTitle);
+        return this;
+    }
+
+    public AlertsWindowsPage selectMenuBtnAlert() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click()", alertMenuBtn);
         return this;
     }
 
     public AlertsWindowsPage isSelectAlert() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.visibilityOf(mainTitleAlerts));
+        waitVisibility(mainTitleAlerts);
         return this;
+    }
+
+    public String clickAlertBtn() {
+        try {
+            alertBtn.click();
+            Alert alert = waitAlertIsPresent();
+            msg = alert.getText();
+            alert.accept();
+        } catch (Exception e) {
+            System.out.println("unexpected alert not present");
+        }
+        return msg;
+    }
+
+    public String clickTimeAlertBtn() {
+        try {
+            timeAlertBtn.click();
+            Alert alert = waitAlertIsPresent();
+            msg = alert.getText();
+            alert.accept();
+        } catch (Exception e) {
+            System.out.println("unexpected alert not present");
+        }
+        return msg;
+    }
+
+    public String clickConfirmBtn() {
+        try {
+            confirmAlertBtn.click();
+            Alert alert = waitAlertIsPresent();
+            msg = alert.getText();
+            alert.dismiss();
+        } catch (Exception e) {
+            System.out.println("unexpected alert not present");
+        }
+        return msg;
+    }
+
+    public String getConfirmAlertTxt() {
+        return confirmAlertTxt.getText();
+    }
+
+    public String clickPromptAlertBtn(String name) {
+        try {
+            promptAlertBtn.click();
+            Alert alert = waitAlertIsPresent();
+            msg = alert.getText();
+            alert.sendKeys(name);
+            alert.accept();
+        } catch (Exception e) {
+            System.out.println("unexpected alert not present");
+        }
+        return msg;
+    }
+
+    public String getPromptAlertTxt() {
+        return promptAlertTxt.getText();
     }
 }
