@@ -28,7 +28,6 @@ abstract public class BasePage {
     }
 
     protected void waitAndClick(WebElement locator) {
-//        new Actions(driver).click(wait.until(ExpectedConditions.elementToBeClickable(locator)));
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
